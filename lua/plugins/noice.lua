@@ -1,14 +1,19 @@
 return {
-  -- Configure LazyVim to load gruvbox
   {
     "folke/noice.nvim",
     opts = {
+      popupmenu = {
+        backend = "cmp",
+      },
       cmdline = {
-        enabled = false,
+        view = "cmdline",
       },
-      messages = {
-        enabled = false,
-      },
+      -- cmdline = {
+      --   enabled = false,
+      -- },
+      -- messages = {
+      --   enabled = false,
+      -- },
     },
   },
 }

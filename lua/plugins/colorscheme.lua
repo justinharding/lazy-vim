@@ -6,14 +6,12 @@ return {
       transparent_background = true,
     },
   },
-  -- { "ellisonleao/gruvbox.nvim" },
 
-  -- Configure LazyVim to load gruvbox
+  -- Configure LazyVim to load catppuccin
   {
     "LazyVim/LazyVim",
     opts = {
       colorscheme = "catppuccin",
-      -- colorscheme = "gruvbox",
     },
   },
 }
