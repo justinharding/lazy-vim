@@ -1,7 +1,7 @@
 return {
   -- add gruvbox
   {
-    "catppuccin/nvim",
+    "catppuccin",
     opts = {
       transparent_background = true,
     },
