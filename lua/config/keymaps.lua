@@ -11,10 +11,28 @@ vim.keymap.set("n", "<A-j>", require("smart-splits").resize_down)
 vim.keymap.set("n", "<A-k>", require("smart-splits").resize_up)
 vim.keymap.set("n", "<A-l>", require("smart-splits").resize_right)
 -- moving between splits
-vim.keymap.set("n", "<C-h>", require("smart-splits").move_cursor_left)
-vim.keymap.set("n", "<C-j>", require("smart-splits").move_cursor_down)
-vim.keymap.set("n", "<C-k>", require("smart-splits").move_cursor_up)
-vim.keymap.set("n", "<C-l>", require("smart-splits").move_cursor_right)
+-- vim.keymap.set("n", "<C-h>", require("smart-splits").move_cursor_left)
+-- vim.keymap.set("n", "<C-j>", require("smart-splits").move_cursor_down)
+-- vim.keymap.set("n", "<C-k>", require("smart-splits").move_cursor_up)
+-- vim.keymap.set("n", "<C-l>", require("smart-splits").move_cursor_right)
+
+-- let g:kitty_navigator_no_mappings = 1
+--
+-- nnoremap <silent> {Left-Mapping} :KittyNavigateLeft<cr>
+-- nnoremap <silent> {Down-Mapping} :KittyNavigateDown<cr>
+-- nnoremap <silent> {Up-Mapping} :KittyNavigateUp<cr>
+-- nnoremap <silent> {Right-Mapping} :KittyNavigateRight<cr>
+
+-- Disable Kitty Navigator default mappings
+vim.g.kitty_navigator_no_mappings = 1
+
+-- Define custom key mappings
+vim.keymap.set('n', "<C-h>", '<Cmd>KittyNavigateLeft<CR>', { silent = true })
+vim.keymap.set('n', '<C-j>', '<Cmd>KittyNavigateDown<CR>', { silent = true })
+vim.keymap.set('n', '<C-k>', '<Cmd>KittyNavigateUp<CR>', { silent = true })
+vim.keymap.set('n', '<C-l>', '<Cmd>KittyNavigateRight<CR>', { silent = true })
+
+
 vim.keymap.set("n", "<C-\\>", require("smart-splits").move_cursor_previous)
 -- swapping buffers between windows
 vim.keymap.set("n", "<leader><leader>h", require("smart-splits").swap_buf_left)
