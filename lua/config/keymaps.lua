@@ -41,3 +41,8 @@ vim.keymap.set("n", "<leader><leader>k", require("smart-splits").swap_buf_up)
 vim.keymap.set("n", "<leader><leader>l", require("smart-splits").swap_buf_right)
 
 vim.keymap.set("n", "<leader>mb", ":MakeBuild<CR>", { desc = "Make build" })
+
+
+--unmap lazynvim H and L so we can have default behaviour
+vim.keymap.del("n", "H") -- Unmap H in normal mode
+vim.keymap.del("n", "L") -- Unmap L in normal mode
