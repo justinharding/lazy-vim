@@ -1,19 +1,177 @@
-return {
-  {
-    "folke/noice.nvim",
-    opts = {
-      popupmenu = {
-        backend = "cmp",
-      },
-      cmdline = {
-        view = "cmdline",
-      },
-      -- cmdline = {
-      --   enabled = false,
-      -- },
-      -- messages = {
-      --   enabled = false,
-      -- },
-    },
-  },
-}
+return {}
+-- return {
+--   {
+--     "folke/noice.nvim",
+--     opts = {
+--       cmdline = {
+--         enabled = false,
+--       },
+--       messages = {
+--         enabled = false,
+--       },
+--       popupmenu = {
+--         enabled = false,
+--         -- backend = "cmp", -- keep this if you're using nvim-cmp
+--       },
+--       notify = {
+--         enabled = false,
+--       },
+--       lsp = {
+--         progress = {
+--           enabled = false,
+--         },
+--         signature = {
+--           enabled = false,
+--         },
+--         hover = {
+--           enabled = false,
+--         },
+--       },
+--       presets = {}, -- disable all visual presets
+--     },
+--   },
+-- }
+-- return {
+--   "folke/noice.nvim",
+--   opts = {
+--     cmdline = {
+--       enabled = false,
+--     },
+--     -- cmdline = {
+--     --   enabled = true, -- Make sure this is true to enable the popup UI
+--     --   view = "cmdline_popup",
+--     --   format = {
+--     --     cmdline = { icon = "", lang = "vim" },
+--     --     search_down = { icon = " ", lang = "regex" },
+--     --     search_up = { icon = " ", lang = "regex" },
+--     --   },
+--     -- },
+--     presets = {
+--       bottom_search = false, -- Move search to bottom
+--       command_palette = true, -- Group command line & popupmenu
+--     },
+--   },
+-- }
+
+-- return {
+--   {
+--     "folke/noice.nvim",
+--     opts = {
+--       popupmenu = {
+--         backend = "cmp",
+--       },
+--       cmdline = {
+--         view = "cmdline",
+--       },
+--       -- cmdline = {
+--       --   enabled = false,
+--       -- },
+--       -- messages = {
+--       --   enabled = false,
+--       -- },
+--     },
+--   },
+-- }
+
+-- return {
+--   {
+--     "folke/noice.nvim",
+--     opts = {
+--       popupmenu = {
+--         backend = "cmp", -- keep this if you're using nvim-cmp
+--       },
+--       cmdline = {
+--         view = "cmdline", -- fallback to native cmdline
+--       },
+--       messages = {
+--         enabled = false, -- disable message UI handling
+--       },
+--       notify = {
+--         enabled = false, -- disable notifications via Noice
+--       },
+--       lsp = {
+--         progress = {
+--           enabled = false, -- disable LSP progress messages
+--         },
+--         signature = {
+--           enabled = false, -- optional: disable inline signature help
+--         },
+--         hover = {
+--           enabled = false, -- optional: disable hover UI
+--         },
+--       },
+--     },
+--   },
+-- }
+
+-- return {
+--   {
+--     "folke/noice.nvim",
+--     enabled = false,
+--   },
+-- }
+
+-- return {
+--   {
+--     "folke/noice.nvim",
+--     opts = {
+--       cmdline = {
+--         enabled = false,
+--       },
+--       messages = {
+--         enabled = false,
+--       },
+--       popupmenu = {
+--         enabled = false,
+--       },
+--       notify = {
+--         enabled = false,
+--       },
+--       lsp = {
+--         progress = {
+--           enabled = false,
+--         },
+--         signature = {
+--           enabled = false,
+--         },
+--         hover = {
+--           enabled = false,
+--         },
+--       },
+--       presets = {}, -- disable all visual presets
+--     },
+--   },
+-- }
+
+-- return {
+--   {
+--     "folke/noice.nvim",
+--     opts = {
+--       cmdline = {
+--         enabled = false,
+--       },
+--       messages = {
+--         enabled = false,
+--       },
+--       popupmenu = {
+--         enabled = false,
+--         -- backend = "cmp", -- keep this if you're using nvim-cmp
+--       },
+--       notify = {
+--         enabled = false,
+--       },
+--       lsp = {
+--         progress = {
+--           enabled = false,
+--         },
+--         signature = {
+--           enabled = false,
+--         },
+--         hover = {
+--           enabled = false,
+--         },
+--       },
+--       presets = {}, -- disable all visual presets
+--     },
+--   },
+-- }

@@ -27,6 +27,11 @@ vim.keymap.set("n", "<A-l>", require("smart-splits").resize_right)
 vim.g.kitty_navigator_no_mappings = 1
 
 -- Define custom key mappings
+-- vim.keymap.set('c', '<C-a>', '<Home>', { noremap = true, silent = true })
+-- vim.keymap.set('c', '<C-e>', '<End>', { noremap = true, silent = true })
+vim.keymap.set('c', '<C-a>', '<C-b>', { noremap = true })  -- go to start
+-- vim.keymap.set('c', '<C-e>', '<C-b>$', { noremap = true, silent = true })  -- go to end
+
 vim.keymap.set('n', "<C-h>", '<Cmd>KittyNavigateLeft<CR>', { silent = true })
 vim.keymap.set('n', '<C-j>', '<Cmd>KittyNavigateDown<CR>', { silent = true })
 vim.keymap.set('n', '<C-k>', '<Cmd>KittyNavigateUp<CR>', { silent = true })
