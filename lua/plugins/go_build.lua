@@ -29,6 +29,14 @@ return {
       vim.api.nvim_create_user_command("MakeBuild", function()
         vim.cmd([[cexpr system('make build') | copen]])
       end, { desc = "Run make build" })
+
+      vim.api.nvim_create_user_command("GoBuild", function()
+        vim.cmd([[cexpr system('go build ./...') | copen]])
+      end, { desc = "Run go build" })
+
+      vim.keymap.set("n", "<leader>gm", function()
+        vim.cmd("GoBuild")
+      end, { desc = "Run go build" })
     end,
   },
 }
