@@ -51,3 +51,18 @@ vim.keymap.set("n", "<leader>mb", ":MakeBuild<CR>", { desc = "Make build" })
 --unmap lazynvim H and L so we can have default behaviour
 vim.keymap.del("n", "H") -- Unmap H in normal mode
 vim.keymap.del("n", "L") -- Unmap L in normal mode
+
+-- map a key to scrape the lines from a terminal into a quickfix list
+vim.keymap.set('n', '<leader>qt', function()
+  local lines = vim.api.nvim_buf_get_lines(0, 0, -1, false)
+  vim.fn.setqflist({}, ' ', {lines = lines})
+  vim.cmd('copen')
+end, {desc = "Send buffer to quickfix"})
+
+vim.keymap.set('t', '<leader>qt', function()
+  vim.cmd('normal! <C-\\><C-n>')
+  local lines = vim.api.nvim_buf_get_lines(0, 0, -1, false)
+  vim.fn.setqflist({}, ' ', {lines = lines})
+  vim.cmd('copen')
+end, {desc = "Send buffer to quickfix (terminal)"})
+
