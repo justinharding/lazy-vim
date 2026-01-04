@@ -32,11 +32,20 @@ vim.g.kitty_navigator_no_mappings = 1
 vim.keymap.set('c', '<C-a>', '<C-b>', { noremap = true })  -- go to start
 -- vim.keymap.set('c', '<C-e>', '<C-b>$', { noremap = true, silent = true })  -- go to end
 
-vim.keymap.set('n', "<C-h>", '<Cmd>KittyNavigateLeft<CR>', { silent = true })
-vim.keymap.set('n', '<C-j>', '<Cmd>KittyNavigateDown<CR>', { silent = true })
-vim.keymap.set('n', '<C-k>', '<Cmd>KittyNavigateUp<CR>', { silent = true })
-vim.keymap.set('n', '<C-l>', '<Cmd>KittyNavigateRight<CR>', { silent = true })
+-- vim.keymap.set('n', "<C-h>", '<Cmd>KittyNavigateLeft<CR>', { silent = true })
+-- vim.keymap.set('n', '<C-j>', '<Cmd>KittyNavigateDown<CR>', { silent = true })
+-- vim.keymap.set('n', '<C-k>', '<Cmd>KittyNavigateUp<CR>', { silent = true })
+-- vim.keymap.set('n', '<C-l>', '<Cmd>KittyNavigateRight<CR>', { silent = true })
 
+vim.keymap.set('n', "<C-h>", '<Cmd>ZellijNavigateLeft<CR>', { silent = true })
+vim.keymap.set('n', '<C-j>', '<Cmd>ZellijNavigateDown<CR>', { silent = true })
+vim.keymap.set('n', '<C-k>', '<Cmd>ZellijNavigateUp<CR>', { silent = true })
+vim.keymap.set('n', '<C-l>', '<Cmd>ZellijNavigateRight<CR>', { silent = true })
+
+-- nnoremap <silent> <C-h> :ZellijNavigateLeft<CR>
+-- nnoremap <silent> <C-j> :ZellijNavigateDown<CR>
+-- nnoremap <silent> <C-k> :ZellijNavigateUp<CR>
+-- nnoremap <silent> <C-l> :ZellijNavigateRight<CR>
 
 vim.keymap.set("n", "<C-\\>", require("smart-splits").move_cursor_previous)
 -- swapping buffers between windows
