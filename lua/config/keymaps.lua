@@ -6,72 +6,24 @@
 -- resizing splits
 -- these keymaps will also accept a range,
 -- for example `10<A-h>` will `resize_left` by `(10 * config.default_amount)`
-vim.keymap.set("n", "<A-h>", require("smart-splits").resize_left)
-vim.keymap.set("n", "<A-j>", require("smart-splits").resize_down)
-vim.keymap.set("n", "<A-k>", require("smart-splits").resize_up)
-vim.keymap.set("n", "<A-l>", require("smart-splits").resize_right)
--- moving between splits
--- vim.keymap.set("n", "<C-h>", require("smart-splits").move_cursor_left)
--- vim.keymap.set("n", "<C-j>", require("smart-splits").move_cursor_down)
--- vim.keymap.set("n", "<C-k>", require("smart-splits").move_cursor_up)
--- vim.keymap.set("n", "<C-l>", require("smart-splits").move_cursor_right)
 
--- let g:kitty_navigator_no_mappings = 1
---
--- nnoremap <silent> {Left-Mapping} :KittyNavigateLeft<cr>
--- nnoremap <silent> {Down-Mapping} :KittyNavigateDown<cr>
--- nnoremap <silent> {Up-Mapping} :KittyNavigateUp<cr>
--- nnoremap <silent> {Right-Mapping} :KittyNavigateRight<cr>
+local status, ss = pcall(require, "smart-splits")
+if status then
+  -- Recommended Mappings
+  vim.keymap.set("n", "<C-h>", ss.move_cursor_left)
+  vim.keymap.set("n", "<C-j>", ss.move_cursor_down)
+  vim.keymap.set("n", "<C-k>", ss.move_cursor_up)
+  vim.keymap.set("n", "<C-l>", ss.move_cursor_right)
 
--- Disable Kitty Navigator default mappings
-vim.g.kitty_navigator_no_mappings = 1
-
--- Define custom key mappings
--- vim.keymap.set('c', '<C-a>', '<Home>', { noremap = true, silent = true })
--- vim.keymap.set('c', '<C-e>', '<End>', { noremap = true, silent = true })
-vim.keymap.set('c', '<C-a>', '<C-b>', { noremap = true })  -- go to start
--- vim.keymap.set('c', '<C-e>', '<C-b>$', { noremap = true, silent = true })  -- go to end
-
--- vim.keymap.set('n', "<C-h>", '<Cmd>KittyNavigateLeft<CR>', { silent = true })
--- vim.keymap.set('n', '<C-j>', '<Cmd>KittyNavigateDown<CR>', { silent = true })
--- vim.keymap.set('n', '<C-k>', '<Cmd>KittyNavigateUp<CR>', { silent = true })
--- vim.keymap.set('n', '<C-l>', '<Cmd>KittyNavigateRight<CR>', { silent = true })
-
-vim.keymap.set('n', "<C-h>", '<Cmd>ZellijNavigateLeft<CR>', { silent = true })
-vim.keymap.set('n', '<C-j>', '<Cmd>ZellijNavigateDown<CR>', { silent = true })
-vim.keymap.set('n', '<C-k>', '<Cmd>ZellijNavigateUp<CR>', { silent = true })
-vim.keymap.set('n', '<C-l>', '<Cmd>ZellijNavigateRight<CR>', { silent = true })
-
--- nnoremap <silent> <C-h> :ZellijNavigateLeft<CR>
--- nnoremap <silent> <C-j> :ZellijNavigateDown<CR>
--- nnoremap <silent> <C-k> :ZellijNavigateUp<CR>
--- nnoremap <silent> <C-l> :ZellijNavigateRight<CR>
-
-vim.keymap.set("n", "<C-\\>", require("smart-splits").move_cursor_previous)
--- swapping buffers between windows
-vim.keymap.set("n", "<leader><leader>h", require("smart-splits").swap_buf_left)
-vim.keymap.set("n", "<leader><leader>j", require("smart-splits").swap_buf_down)
-vim.keymap.set("n", "<leader><leader>k", require("smart-splits").swap_buf_up)
-vim.keymap.set("n", "<leader><leader>l", require("smart-splits").swap_buf_right)
-
-vim.keymap.set("n", "<leader>mb", ":MakeBuild<CR>", { desc = "Make build" })
-
+  -- Smart Resizing
+  vim.keymap.set("n", "<A-h>", ss.resize_left)
+  vim.keymap.set("n", "<A-j>", ss.resize_down)
+  vim.keymap.set("n", "<A-k>", ss.resize_up)
+  vim.keymap.set("n", "<A-l>", ss.resize_right)
+else
+  print("Smart-splits not found, skipping mappings")
+end
 
 --unmap lazynvim H and L so we can have default behaviour
 vim.keymap.del("n", "H") -- Unmap H in normal mode
 vim.keymap.del("n", "L") -- Unmap L in normal mode
-
--- map a key to scrape the lines from a terminal into a quickfix list
-vim.keymap.set('n', '<leader>qt', function()
-  local lines = vim.api.nvim_buf_get_lines(0, 0, -1, false)
-  vim.fn.setqflist({}, ' ', {lines = lines})
-  vim.cmd('copen')
-end, {desc = "Send buffer to quickfix"})
-
-vim.keymap.set('t', '<leader>qt', function()
-  vim.cmd('normal! <C-\\><C-n>')
-  local lines = vim.api.nvim_buf_get_lines(0, 0, -1, false)
-  vim.fn.setqflist({}, ' ', {lines = lines})
-  vim.cmd('copen')
-end, {desc = "Send buffer to quickfix (terminal)"})
-
