@@ -52,7 +52,7 @@ return {
   "pwntester/octo.nvim",
   requires = {
     "nvim-lua/plenary.nvim",
-    -- "nvim-telescope/telescope.nvim",
+    "nvim-telescope/telescope.nvim",
     "nvim-tree/nvim-web-devicons",
   },
   config = function()
@@ -117,5 +117,7 @@ return {
         },
       },
     })
+    -- Recommended: Set the filetype to markdown for Octo buffers
+    vim.treesitter.language.register("markdown", "octo")
   end,
 }
