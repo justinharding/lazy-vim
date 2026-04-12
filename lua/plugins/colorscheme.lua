@@ -18,16 +18,26 @@
 
 -- this it to get a black background
 
+
 return {
+  -- 1. GitHub Theme (The Light Option)
   {
-    "sainnhe/everforest",
+    "projekt0n/github-nvim-theme",
+    lazy = false,
+    priority = 1000,
+  },
+
+  -- 2. Everforest Theme (The Dark Option)
+  {
+    "sainnhe/everforest", -- Correct repository name
+    lazy = false,
     priority = 1000,
     config = function()
-      -- Optional: set contrast level: "soft", "medium" (default), "hard"
+      -- These global variables must be set BEFORE the colorscheme is loaded
       vim.g.everforest_background = "hard"
       vim.g.everforest_better_performance = 1
 
-      -- Override the dark background to be even darker
+      -- This autocmd fixes the background color specifically for Everforest
       vim.api.nvim_create_autocmd("ColorScheme", {
         pattern = "everforest",
         callback = function()
@@ -40,6 +50,7 @@ return {
     end,
   },
 
+  -- 3. The Auto-Switcher
   {
     "f-person/auto-dark-mode.nvim",
     opts = {
@@ -49,16 +60,63 @@ return {
         vim.cmd("colorscheme everforest")
       end,
       set_light_mode = function()
-        vim.o.background = "light"
-        vim.cmd("colorscheme everforest")
+        -- vim.o.background = "light"
+        -- vim.cmd("colorscheme github_light_tritanopia")
+        vim.cmd("colorscheme github_light")
       end,
     },
   },
 }
 
-
-
-
+-- return {
+--   -- 1. Install Everforest Theme
+--   -- { "neanias/everforest-nvim", lazy = false, priority = 1000 },
+--
+--   {
+--     "projekt0n/github-nvim-theme",
+--     name = "github-theme",
+--   },
+--
+--   -- 2. Install GitHub Theme
+--   {
+--    "neanias/everforest-nvim",
+--     lazy = false,
+--     "projekt0n/github-nvim-theme",
+--     name = "sainnhe/everforest",
+--     priority = 1000,
+--     config = function()
+--       -- Optional: set contrast level: "soft", "medium" (default), "hard"
+--       vim.g.everforest_background = "hard"
+--       vim.g.everforest_better_performance = 1
+--
+--       -- Override the dark background to be even darker
+--       vim.api.nvim_create_autocmd("ColorScheme", {
+--         pattern = "everforest",
+--         callback = function()
+--           if vim.o.background == "dark" then
+--             vim.api.nvim_set_hl(0, "Normal", { bg = "#1a1e19" })
+--             vim.api.nvim_set_hl(0, "NormalNC", { bg = "#1a1e19" })
+--           end
+--         end,
+--       })
+--     end,
+--   },
+--
+--   {
+--     "f-person/auto-dark-mode.nvim",
+--     opts = {
+--       update_interval = 3000,
+--       set_dark_mode = function()
+--         vim.o.background = "dark"
+--         vim.cmd("colorscheme everforest")
+--       end,
+--       set_light_mode = function()
+--         vim.o.background = "light"
+--         vim.cmd("colorscheme github_light")
+--       end,
+--     },
+--   },
+-- }
 
 -- return {
 --   -- Rosé Pine theme
@@ -112,7 +170,6 @@ return {
 --     },
 --   },
 -- }
-
 
 -- return {
 --   {
