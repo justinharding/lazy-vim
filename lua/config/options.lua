@@ -6,4 +6,4 @@ vim.g.autoformat = false
 
 vim.o.background = "light" -- default before auto-dark-mode kicks in
 vim.g.lazyvim_colorscheme = "everforest"
-vim.g.lazyvim_colorscheme = "github_light"
+-- vim.g.lazyvim_colorscheme = "github_light"

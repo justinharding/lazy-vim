@@ -61,8 +61,8 @@ return {
       end,
       set_light_mode = function()
         -- vim.o.background = "light"
-        -- vim.cmd("colorscheme github_light_tritanopia")
-        vim.cmd("colorscheme github_light")
+        vim.cmd("colorscheme github_light_tritanopia")
+        -- vim.cmd("colorscheme github_light")
       end,
     },
   },
