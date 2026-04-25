@@ -3,9 +3,9 @@ require("config.lazy")
 
 vim.opt.termguicolors = true
 
-vim.keymap.set("n", "<leader>gi", "<cmd>Octo issue list<cr>", { desc = "List Issues" })
-vim.keymap.set("n", "<leader>gp", "<cmd>Octo pr list<cr>", { desc = "List PRs" })
-vim.keymap.set("n", "<leader>gr", "<cmd>Octo repo view<cr>", { desc = "View Repo" })
+-- vim.keymap.set("n", "<leader>gi", "<cmd>Octo issue list<cr>", { desc = "List Issues" })
+-- vim.keymap.set("n", "<leader>gp", "<cmd>Octo pr list<cr>", { desc = "List PRs" })
+-- vim.keymap.set("n", "<leader>gr", "<cmd>Octo repo view<cr>", { desc = "View Repo" })
 
 -- Only load these plugins when running inside VS Code
 
