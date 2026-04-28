@@ -20,6 +20,5 @@ end
 
 vim.opt.clipboard = "unnamedplus" -- Sync with system clipboard
 
-vim.o.background = "light" -- default before auto-dark-mode kicks in
-vim.g.lazyvim_colorscheme = "everforest"
--- vim.g.lazyvim_colorscheme = "github_light"
+vim.o.background = "dark"
+vim.g.lazyvim_colorscheme = "catppuccin-mocha"
