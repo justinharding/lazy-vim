@@ -3,6 +3,16 @@ require("config.lazy")
 
 vim.opt.termguicolors = true
 
+-- vim.o.background = 'dark'    -- Ashwood v2
+vim.o.background = 'light'   -- Parchment v2
+-- vim.cmd('colorscheme ashwood')
+vim.cmd('colorscheme void')
+
+vim.keymap.set('n', '<leader>tb', function()
+  vim.o.background = vim.o.background == 'dark' and 'light' or 'dark'
+  vim.cmd('colorscheme void')
+end, { desc = 'toggle background' })
+
 -- vim.keymap.set("n", "<leader>gi", "<cmd>Octo issue list<cr>", { desc = "List Issues" })
 -- vim.keymap.set("n", "<leader>gp", "<cmd>Octo pr list<cr>", { desc = "List PRs" })
 -- vim.keymap.set("n", "<leader>gr", "<cmd>Octo repo view<cr>", { desc = "View Repo" })
