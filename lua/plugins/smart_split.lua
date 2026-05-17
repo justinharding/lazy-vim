@@ -4,10 +4,11 @@
 
 return {
   'mrjones2014/smart-splits.nvim',
-  lazy = false, -- Load at startup so Zellij can always communicate with it
+  -- lazy = false, -- Load at startup so Zellij can always communicate with it
   opts = {
     -- This is where your config goes
-    multiplexer_integration = 'zellij',
+    -- multiplexer_integration = 'zellij',
+    multiplexer_integration = 'tmux',
     move_cursor_same_row = false,
     cursor_follows_swapped_bufs = true,
   },
