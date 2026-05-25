@@ -13,6 +13,16 @@ vim.keymap.set('n', '<leader>tb', function()
   vim.cmd('colorscheme void')
 end, { desc = 'toggle background' })
 
+-- init.lua
+vim.api.nvim_create_autocmd("FileType", {
+  pattern = "go",
+  callback = function()
+    vim.opt_local.makeprg = "go build ./..."
+    vim.keymap.set("n", "gb", ":make<CR>:copen<CR>", { buffer = true, desc = "Go build" })
+  end,
+})
+
+
 -- vim.keymap.set("n", "<leader>gi", "<cmd>Octo issue list<cr>", { desc = "List Issues" })
 -- vim.keymap.set("n", "<leader>gp", "<cmd>Octo pr list<cr>", { desc = "List PRs" })
 -- vim.keymap.set("n", "<leader>gr", "<cmd>Octo repo view<cr>", { desc = "View Repo" })
