@@ -1,42 +1,42 @@
 return {
-  {
-    "pwntester/octo.nvim",
-    cmd = "Octo",
-    dependencies = {
-      "nvim-lua/plenary.nvim",
-      "ibhagwan/fzf-lua",
-      "nvim-tree/nvim-web-devicons",
-    },
-    opts = {
-      enable_builtin = true,
-      default_to_projects_v2 = true,
-      default_merge_method = "squash",
-      picker = "fzf-lua",
-      picker_config = {
-        use_emojis = true,
-        mappings = {
-          open_in_browser = { lhs = "<C-b>", desc = "open in browser" },
-          copy_url = { lhs = "<C-y>", desc = "copy url to clipboard" },
-          checkout_pr = { lhs = "<C-o>", desc = "checkout pull request" },
-          merge_pr = { lhs = "<C-r>", desc = "merge pull request" },
-        },
-      },
-    },
-    keys = {
-      { "<leader>gI", "<cmd>Octo issue list<cr>", desc = "List Issues" },
-      { "<leader>gP", "<cmd>Octo pr list<cr>", desc = "List PRs" },
-      { "<leader>gp", "<cmd>Octo pr create<cr>", desc = "Create PR" },
-      { "<leader>gr", "<cmd>Octo review start<cr>", desc = "Start PR Review" },
-    },
-  },
-  {
-    "sindrets/diffview.nvim",
-    cmd = { "DiffviewOpen", "DiffviewClose", "DiffviewFileHistory" },
-    keys = {
-      { "<leader>gd", "<cmd>DiffviewOpen<cr>", desc = "Diffview Open" },
-      { "<leader>gD", "<cmd>DiffviewClose<cr>", desc = "Diffview Close" },
-    },
-  },
+  -- {
+  --   "pwntester/octo.nvim",
+  --   cmd = "Octo",
+  --   dependencies = {
+  --     "nvim-lua/plenary.nvim",
+  --     "ibhagwan/fzf-lua",
+  --     "nvim-tree/nvim-web-devicons",
+  --   },
+  --   opts = {
+  --     enable_builtin = true,
+  --     default_to_projects_v2 = true,
+  --     default_merge_method = "squash",
+  --     picker = "fzf-lua",
+  --     picker_config = {
+  --       use_emojis = true,
+  --       mappings = {
+  --         open_in_browser = { lhs = "<C-b>", desc = "open in browser" },
+  --         copy_url = { lhs = "<C-y>", desc = "copy url to clipboard" },
+  --         checkout_pr = { lhs = "<C-o>", desc = "checkout pull request" },
+  --         merge_pr = { lhs = "<C-r>", desc = "merge pull request" },
+  --       },
+  --     },
+  --   },
+  --   keys = {
+  --     { "<leader>gI", "<cmd>Octo issue list<cr>", desc = "List Issues" },
+  --     { "<leader>gP", "<cmd>Octo pr list<cr>", desc = "List PRs" },
+  --     { "<leader>gp", "<cmd>Octo pr create<cr>", desc = "Create PR" },
+  --     { "<leader>gr", "<cmd>Octo review start<cr>", desc = "Start PR Review" },
+  --   },
+  -- },
+  -- {
+  --   "sindrets/diffview.nvim",
+  --   cmd = { "DiffviewOpen", "DiffviewClose", "DiffviewFileHistory" },
+  --   keys = {
+  --     { "<leader>gd", "<cmd>DiffviewOpen<cr>", desc = "Diffview Open" },
+  --     { "<leader>gD", "<cmd>DiffviewClose<cr>", desc = "Diffview Close" },
+  --   },
+  -- },
 }
 
 -- return {
