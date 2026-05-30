@@ -1,5 +1,10 @@
+local function is_wsl()
+  return vim.fn.has("wsl") == 1
+end
+
 return {
   "yetone/avante.nvim",
+  enabled = not is_wsl(), -- skip entirely on WSL
   event = "VeryLazy",
   lazy = false,
   version = false, -- Recommended to use the latest for 2026 features
