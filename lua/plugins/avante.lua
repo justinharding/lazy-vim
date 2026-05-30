@@ -2,9 +2,13 @@ local function is_wsl()
   return vim.fn.has("wsl") == 1
 end
 
+local function is_windows()
+  return vim.fn.has("win32") == 1 or vim.fn.has("win64") == 1
+end
+
 return {
   "yetone/avante.nvim",
-  enabled = not is_wsl(), -- skip entirely on WSL
+  enabled = not (is_wsl() or is_windows()), -- skip entirely on WSL and Windows
   event = "VeryLazy",
   lazy = false,
   version = false, -- Recommended to use the latest for 2026 features
