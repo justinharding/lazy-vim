@@ -3,15 +3,17 @@ require("config.lazy")
 
 vim.opt.termguicolors = true
 
--- vim.o.background = 'dark'    -- Ashwood v2
-vim.o.background = 'light'   -- Parchment v2
--- vim.cmd('colorscheme ashwood')
-vim.cmd('colorscheme void')
+-- Theme: `void` colorscheme driven by ~/.theme (see lua/config/theme.lua).
+-- Reads the console light/dark state at startup and polls for live switches.
+require("config.theme").setup()
 
+-- Quick in-session flip between Void (dark) and Chalk (light). This only
+-- toggles Neovim; it does not write ~/.theme, so it won't touch ghostty/tmux.
+-- Use the shell `dark`/`light` commands for a full-system switch.
 vim.keymap.set('n', '<leader>tb', function()
   vim.o.background = vim.o.background == 'dark' and 'light' or 'dark'
   vim.cmd('colorscheme void')
-end, { desc = 'toggle background' })
+end, { desc = 'toggle background (void/chalk)' })
 
 -- init.lua
 vim.api.nvim_create_autocmd("FileType", {

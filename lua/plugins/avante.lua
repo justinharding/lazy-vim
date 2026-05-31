@@ -10,15 +10,15 @@ return {
   "yetone/avante.nvim",
   enabled = not (is_wsl() or is_windows()), -- skip entirely on WSL and Windows
   event = "VeryLazy",
-  lazy = false,
+  lazy = true,
   version = false, -- Recommended to use the latest for 2026 features
   build = "make", -- This builds the binary for the agentic features
   opts = {
     provider = "copilot", -- Use your existing subscription
-    auto_suggestions_provider = "copilot",
+    -- Inline completion is owned by copilot-native; don't let avante compete for ghost text.
     providers = {
       copilot = {
-        model = "claude-3.7-sonnet", -- 2026's best-performing model for C++
+        model = "claude-sonnet-4.6",
         extra_request_body = {
           temperature = 0,
           max_tokens = 4096,

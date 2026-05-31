@@ -19,12 +19,8 @@ if vim.env.SSH_CONNECTION or vim.env.SSH_TTY then
 end
 
 -- vim.opt.clipboard = "unnamedplus"   -- removed
+-- Explicit system-clipboard bridges live in keymaps.lua
 
--- explicit bridges
-vim.keymap.set({'n', 'v'}, '<leader>y', '"+y', { desc = 'Yank to system clipboard' })
-vim.keymap.set('n',        '<leader>Y', '"+Y', { desc = 'Yank line to system clipboard' })
-vim.keymap.set({'n', 'v'}, '<leader>p', '"+p', { desc = 'Paste from system clipboard' })
-vim.keymap.set({'n', 'v'}, '<leader>P', '"+P', { desc = 'Paste before from system clipboard' })
-
+-- Initial background only; the active colorscheme is owned by the ~/.theme
+-- poll in lua/config/theme.lua (so the theme syncs across tmux/SSH).
 vim.o.background = "dark"
-vim.g.lazyvim_colorscheme = "catppuccin-mocha"
