@@ -2,14 +2,22 @@
 --
 -- The `void` colorscheme (colors/void.lua) renders as Void when
 -- background=dark and Chalk when background=light, matching the terminal
--- (ghostty void/chalk, tmux void-chalk). We read ~/.theme — written by the
--- `dark`/`light` shell functions — so Neovim tracks the console light/dark
--- state, including across tmux/SSH where OS-appearance detection can't reach.
+-- (ghostty void/chalk, tmux void-chalk).
+--
+-- Two ways the mode reaches us:
+--   * Locally  — the `dark`/`light` shell functions write ~/.theme; we poll it.
+--   * Over SSH — ~/.theme is on the wrong machine, so we trust the terminal.
+--     Nvim (0.11+) re-queries the background on a DEC-2031 theme-update
+--     notification and updates 'background'; those notifications ride the PTY
+--     through ssh + tmux (allow-passthrough), so the remote editor follows the
+--     host theme. The OptionSet hook below re-renders void when that happens.
 local M = {}
 
-local last_mode
+local function render()
+  vim.cmd("colorscheme void") -- void.lua reads vim.o.background
+end
 
-local function read_mode()
+local function read_file_mode()
   local f = io.open(vim.fn.expand("~/.theme"), "r")
   local mode = f and f:read("*l") or "dark"
   if f then
@@ -18,24 +26,40 @@ local function read_mode()
   return (mode == "light") and "light" or "dark"
 end
 
--- Apply the scheme for the current ~/.theme value. With force=false this is a
--- no-op unless the file changed since last apply, so an in-session <leader>tb
--- toggle persists instead of being reverted on the next poll tick.
-local function apply(force)
-  local mode = read_mode()
-  if mode == last_mode and not force then
+function M.setup()
+  -- Re-render void on any background change. Covers both the local poll (which
+  -- sets 'background') and the TUI's terminal-driven updates over SSH.
+  vim.api.nvim_create_autocmd("OptionSet", {
+    pattern = "background",
+    callback = render,
+  })
+
+  local in_ssh = vim.env.SSH_CONNECTION ~= nil or vim.env.SSH_TTY ~= nil
+
+  if in_ssh then
+    -- Trust the terminal: nvim has already detected the background at startup,
+    -- and the OptionSet hook handles live theme switches. <leader>tb still
+    -- works as a manual override if the stack doesn't forward notifications.
+    render()
     return
   end
-  last_mode = mode
-  vim.o.background = mode -- "light" -> Chalk, "dark" -> Void
-  vim.cmd("colorscheme void")
-end
 
-function M.setup()
-  apply(true)
+  -- Local: ~/.theme is authoritative. Poll it and drive 'background' (which
+  -- fires the OptionSet hook above). change-only, so a <leader>tb toggle sticks.
+  local last
+  local function poll(force)
+    local mode = read_file_mode()
+    if mode == last and not force then
+      return
+    end
+    last = mode
+    vim.o.background = mode
+  end
+  poll(true)
+  render() -- ensure void is applied even if background didn't change
   local timer = vim.uv.new_timer()
   timer:start(1000, 1000, vim.schedule_wrap(function()
-    apply(false)
+    poll(false)
   end))
   vim.api.nvim_create_autocmd("VimLeavePre", {
     callback = function()

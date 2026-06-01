@@ -21,6 +21,9 @@ end
 -- vim.opt.clipboard = "unnamedplus"   -- removed
 -- Explicit system-clipboard bridges live in keymaps.lua
 
--- Initial background only; the active colorscheme is owned by the ~/.theme
--- poll in lua/config/theme.lua (so the theme syncs across tmux/SSH).
-vim.o.background = "dark"
+-- Initial background only; the active colorscheme is owned by lua/config/theme.lua.
+-- Skip the hardcoded default in SSH so Neovim's terminal background detection
+-- (OSC 11 / DEC 2031) wins there and the remote editor follows the host theme.
+if not (vim.env.SSH_CONNECTION or vim.env.SSH_TTY) then
+  vim.o.background = "dark"
+end
