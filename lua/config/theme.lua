@@ -27,6 +27,13 @@ local function read_file_mode()
 end
 
 function M.setup()
+  -- Portable diagnostics. `:checkhealth theme` works on macOS/Linux, but its
+  -- discovery of a single-level lua/theme/health.lua is unreliable on Windows,
+  -- so expose a command that calls the report directly (no runtime glob).
+  vim.api.nvim_create_user_command("ThemeHealth", function()
+    require("theme.health").report()
+  end, { desc = "Theme diagnostics (portable :checkhealth theme)" })
+
   -- Re-render void on any background change. Covers both the local poll (which
   -- sets 'background') and the TUI's terminal-driven updates over SSH.
   vim.api.nvim_create_autocmd("OptionSet", {
