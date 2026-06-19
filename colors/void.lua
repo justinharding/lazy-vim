@@ -290,6 +290,13 @@ hi('CmpItemKindModule',     { fg=p.blue })
 hi('CmpItemKindText',       { fg=p.fg1 })
 hi('CmpItemKindSnippet',    { fg=p.pink })
 
+-- ── Copilot / inline ghost text ──────────────────────────────────────────────
+-- Plugin defaults are a dim grey (#808080) that is near-unreadable on bg0.
+-- Use the comment colour so suggestions are clearly legible but still muted.
+hi('CopilotSuggestion',  { fg=p.fg1, italic=true })
+hi('CopilotAnnotation',  { fg=p.fg2, italic=true })
+hi('BlinkCmpGhostText',  { fg=p.fg1, italic=true })
+
 -- ── neo-tree ─────────────────────────────────────────────────────────────────
 hi('NeoTreeNormal',        { fg=p.fg0, bg=p.bg1 })
 hi('NeoTreeNormalNC',      { fg=p.fg1, bg=p.bg1 })
